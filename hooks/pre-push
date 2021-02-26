@@ -1,0 +1,16 @@
+#!/bin/bash
+. "$(dirname "$0")/common.sh"
+
+
+cd app/frontend
+
+# check typescript compile and lint 
+yarn lint:check
+if [ $? != 0 ]; then
+  exit 1
+fi
+
+
+print "Pre push check passed" $GREEN
+
+exit 0
