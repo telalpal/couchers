@@ -23,7 +23,7 @@
     "typescript": "~4.1.3"
   },
   "scripts": {
-    "preinstall": "git config core.hooksPath ../../hooks",
+    "preinstall": "git config core.hooksPath hooks",
     "start": "react-scripts start",
     "build": "CI=true react-scripts build",
     "test": "react-scripts test",
