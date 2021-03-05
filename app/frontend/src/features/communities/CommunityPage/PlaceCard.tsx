@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.grey[200],
     height: 80,
     objectFit: "contain",
+    [theme.breakpoints.up("sm")]: {
+      height: 100,
+    },
+    [theme.breakpoints.up("md")]: {
+      height: 120,
+    },
   },
   title: {
     ...theme.typography.h3,

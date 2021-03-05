@@ -4,7 +4,10 @@ import type {} from "@material-ui/lab/themeAugmentation";
 
 declare module "@material-ui/core/styles/createTypography" {
   interface TypographyOptions {
-    h1Large?: TypographyStyleOptions;
+    h1Large: TypographyStyleOptions;
+  }
+  interface Typography {
+    h1Large: TypographyStyleOptions;
   }
 }
 
