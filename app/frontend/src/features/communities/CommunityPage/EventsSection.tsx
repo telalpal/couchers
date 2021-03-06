@@ -2,7 +2,11 @@ import HorizontalScroller from "components/HorizontalScroller";
 import IconButton from "components/IconButton";
 import { CalendarIcon, MoreIcon } from "components/Icons";
 import TextBody from "components/TextBody";
-import { EVENTS_EMPTY_STATE, SEE_MORE_EVENTS_LABEL } from "features/constants";
+import {
+  EVENTS_EMPTY_STATE,
+  EVENTS_TITLE,
+  SEE_MORE_EVENTS_LABEL,
+} from "features/constants";
 import { Community } from "pb/communities_pb";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -21,7 +25,7 @@ export default function PlacesSection({
 
   return (
     <>
-      <SectionTitle icon={<CalendarIcon />}>Events</SectionTitle>
+      <SectionTitle icon={<CalendarIcon />}>{EVENTS_TITLE}</SectionTitle>
       {
         //{eventsError && <Alert severity="error">{eventsError.message}</Alert>}
         //{isEventsLoading && <CircularProgress />}
@@ -36,7 +40,8 @@ export default function PlacesSection({
               event={{
                 title: "Placeholder event",
                 creatorName: "Bot",
-                location: "Amsterdam",
+                location:
+                  "Restaurant name, No 2, Something street, Suburb, Amsterdam",
                 startTime: { seconds: Date.now() / 1000, nanos: 0 },
               }}
               className={classes.placeEventCard}
