@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   cardContent: { height: "100%" },
-  link: { height: "100%", textDecoration: "none" },
+  link: { height: "100%", textDecoration: "none", color: "inherit" },
   userLoading: { display: "inline-block", width: 80 },
   surtitle: { marginBottom: theme.spacing(0.5) },
   replies: {

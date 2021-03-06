@@ -14,7 +14,7 @@ import { routeToEvent } from "../../../routes";
 import { timestamp2Date } from "../../../utils/date";
 
 const useStyles = makeStyles((theme) => ({
-  link: { textDecoration: "none" },
+  link: { textDecoration: "none", color: "inherit" },
   title: {
     ...theme.typography.h3,
     height: `calc(2 * calc(${theme.typography.h3.lineHeight} * ${theme.typography.h3.fontSize}))`,

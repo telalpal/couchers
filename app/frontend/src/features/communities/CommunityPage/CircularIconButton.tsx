@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     textDecoration: "none",
+    color: "inherit",
   },
   button: {
     marginBottom: theme.spacing(0.5),

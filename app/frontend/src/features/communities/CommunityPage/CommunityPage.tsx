@@ -67,11 +67,13 @@ export const useCommunityPageStyles = makeStyles((theme) => ({
   title: {
     marginBottom: theme.spacing(1),
     marginTop: theme.spacing(1),
+    [theme.breakpoints.up("md")]: theme.typography.h1Large,
   },
   description: {
     marginBottom: theme.spacing(1),
   },
   cardContainer: {
+    alignItems: "flex-start",
     [theme.breakpoints.down("xs")]: {
       //break out of page padding
       left: "50%",
@@ -195,8 +197,8 @@ export default function CommunityPage() {
                 {COMMUNITY_HEADING(community.name)}
               </Typography>
               <Typography variant="body2" className={classes.description}>
-                {community.description} {MORE_TIPS}
-                <Link to="#"> here.</Link>
+                {community.description} {MORE_TIPS}&nbsp;
+                <Link to="#">here.</Link>
               </Typography>
             </div>
             <Hidden mdUp>
