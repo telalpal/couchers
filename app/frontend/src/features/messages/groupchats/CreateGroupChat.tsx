@@ -13,21 +13,17 @@ import {
 import { AddIcon } from "components/Icons";
 import TextField from "components/TextField";
 import useFriendList from "features/connections/friends/useFriendList";
-import { Error as GrpcError } from "grpc-web";
-import { User } from "pb/api_pb";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
-import { service } from "service/index";
+import { useQueryClient } from "react-query";
+
+import useCreateGroupChat, {
+  CreateGroupChatFormData,
+} from "./useCreateGroupChat";
 
 const useStyles = makeStyles((theme) => ({
   field: { marginTop: theme.spacing(1) },
 }));
-
-interface CreateGroupChatFormData {
-  title: string;
-  users: User.AsObject[];
-}
 
 export default function CreateGroupChat({ className }: { className?: string }) {
   const classes = useStyles();
@@ -48,16 +44,13 @@ export default function CreateGroupChat({ className }: { className?: string }) {
     isLoading: isCreateLoading,
     error: createError,
     reset: resetMutationStatus,
-  } = useMutation<number, GrpcError, CreateGroupChatFormData>(
-    ({ title, users }) => service.conversations.createGroupChat(title, users),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["groupChats"]);
-        resetForm();
-        setIsOpen(false);
-      },
-    }
-  );
+  } = useCreateGroupChat({
+    onSuccess: () => {
+      queryClient.invalidateQueries(["groupChats"]);
+      resetForm();
+      setIsOpen(false);
+    },
+  });
 
   const onSubmit = handleSubmit(({ title, users }: CreateGroupChatFormData) =>
     createGroupChat({ title, users })

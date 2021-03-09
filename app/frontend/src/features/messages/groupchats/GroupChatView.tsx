@@ -24,6 +24,7 @@ import useUsers from "features/userQueries/useUsers";
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 import { Error as GrpcError } from "grpc-web";
 import { GetGroupChatMessagesRes, GroupChat } from "pb/conversations_pb";
+import { groupChatKey } from "queryKeys";
 import React, { useRef, useState } from "react";
 import {
   useInfiniteQuery,
@@ -95,7 +96,7 @@ export default function GroupChatView() {
     GroupChat.AsObject,
     GrpcError
   >(
-    ["groupChat", groupChatId],
+    groupChatKey(groupChatId),
     () => service.conversations.getGroupChat(groupChatId),
     { enabled: !!groupChatId }
   );
