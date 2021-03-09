@@ -21,10 +21,7 @@ import useFriendList from "./useFriendList";
 function CurrentFriendAction({ friend }: { friend: User.AsObject }) {
   const history = useHistory();
   const queryClient = useQueryClient();
-  const { data: groupChat, isLoading } = useQuery<
-    GroupChat.AsObject,
-    GrpcError
-  >({
+  const { data: groupChatId, isLoading } = useQuery<number, GrpcError>({
     cacheTime: directMessageQueryStaleTime,
     staleTime: directMessageQueryStaleTime,
     queryFn: () => service.conversations.getDirectMessage(friend.userId),
@@ -61,8 +58,8 @@ function CurrentFriendAction({ friend }: { friend: User.AsObject }) {
       )}
       {isLoading ? (
         <CircularProgress />
-      ) : groupChat ? (
-        <Link to={routeToGroupChat(groupChat.groupChatId)}>
+      ) : groupChatId ? (
+        <Link to={routeToGroupChat(groupChatId)}>
           <IconButton aria-label="Direct message">
             <EmailIcon />
           </IconButton>

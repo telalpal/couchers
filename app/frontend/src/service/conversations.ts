@@ -131,5 +131,7 @@ export async function getDirectMessage(userId: number) {
   const req = new GetDirectMessageReq();
   req.setUserId(userId);
   const res = await client.conversations.getDirectMessage(req);
-  return res.toObject();
+
+  console.log(userId, res.getGroupChatId());
+  return res.getGroupChatId();
 }
