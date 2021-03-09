@@ -40,3 +40,5 @@ export const referencesKey = (
   userId: number,
   type: "received" | "given" | "all"
 ) => ["references", { type, userId }];
+
+export const groupChatKey = (groupChatId: number) => ["groupChat", groupChatId];

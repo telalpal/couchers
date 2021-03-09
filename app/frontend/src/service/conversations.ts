@@ -6,6 +6,7 @@ import { User } from "pb/api_pb";
 import {
   CreateGroupChatReq,
   EditGroupChatReq,
+  GetDirectMessageReq,
   GetGroupChatMessagesReq,
   GetGroupChatReq,
   InviteToGroupChatReq,
@@ -124,4 +125,11 @@ export function markLastSeenGroupChat(
   req.setGroupChatId(groupChatId);
   req.setLastSeenMessageId(lastSeenMessageId);
   return client.conversations.markLastSeenGroupChat(req);
+}
+
+export async function getDirectMessage(userId: number) {
+  const req = new GetDirectMessageReq();
+  req.setUserId(userId);
+  const res = await client.conversations.getDirectMessage(req);
+  return res.toObject();
 }
