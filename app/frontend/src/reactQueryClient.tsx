@@ -23,7 +23,7 @@ export const queryClient = new QueryClient({
 });
 
 const persistor = createLocalStoragePersistor({
-  throttleTime: 100,
+  throttleTime: 16,
 });
 
 persistQueryClient({
